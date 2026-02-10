@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Ionescu Radu",
+    "phone": "+40712345678",
+    "email": "rionescu@rws.com",
+    "age": 37
+  },
+  {
+    "name": "Ionescu Radu 2",
+    "phone": "+40712345679",
+    "email": "rionescu2@rws.com",
+    "age": 18
+  }
+]
