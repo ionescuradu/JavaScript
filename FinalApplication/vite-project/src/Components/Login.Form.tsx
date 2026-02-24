@@ -45,8 +45,8 @@ function LoginForm({ onSubmit, onRegister, error }: LoginFormProps) {
             <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '0.5rem' }}>
                 <div></div>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button type="submit" style={{ padding: '0.5rem', cursor: 'pointer', flex: 1 }}>Login</button>
-                    <button type="button" onClick={() => onRegister(email, password)} style={{ padding: '0.5rem', cursor: 'pointer', flex: 1 }}>Register</button>
+                    <button type="submit" style={{ padding: '0.5rem', cursor: 'pointer', flex: 1, backgroundColor: '#2ecc71', color: '#fff', border: 'none', borderRadius: '6px' }}>Login</button>
+                    <button type="button" onClick={() => onRegister(email, password)} style={{ padding: '0.5rem', cursor: 'pointer', flex: 1, backgroundColor: '#3498db', color: '#fff', border: 'none', borderRadius: '6px' }}>Register</button>
                 </div>
             </div>
         </form>

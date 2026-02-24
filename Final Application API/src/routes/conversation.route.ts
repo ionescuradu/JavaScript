@@ -1,7 +1,9 @@
 import { Router, Request, Response } from "express";
-import { ConversationService } from "../services/conversation.service"
+import { ConversationService } from "../services/conversation.service";
+import { authenticateToken } from "../middleware/auth.middleware";
 
 const router = Router()
+router.use(authenticateToken)
 
 const conversationService = new ConversationService()
 
