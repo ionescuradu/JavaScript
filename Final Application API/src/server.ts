@@ -5,6 +5,7 @@ import { healthRouter } from "./routes"
 import conversationRouter from "./routes/conversation.route"
 import messageRouter from "./routes/message.route"
 import userRouter from "./routes/user.route"
+import authRouter from "./routes/auth.route"
 
 dotenv.config()
 
@@ -19,6 +20,7 @@ app.use("/health", healthRouter)
 app.use("/conversation", conversationRouter)
 app.use("/message", messageRouter)
 app.use("/user", userRouter)
+app.use("/auth", authRouter)
 
 app.listen(PORT, () => {
     console.log("Server is running on http://localhost:" + PORT);
