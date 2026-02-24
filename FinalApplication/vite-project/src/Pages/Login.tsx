@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LoginForm from '../components/Login.Form'
-import { loginUser, createUser } from '../services/auth.service'
+import { loginUser } from '../services/auth.service'
 
 function Login() {
     const navigate = useNavigate()
@@ -17,21 +17,10 @@ function Login() {
         }
     }
 
-    const handleRegister = async (email: string, password: string) => {
-        try {
-            setError('')
-            await createUser(email, password)
-            await loginUser(email, password)
-            navigate('/dashboard', { replace: true })
-        } catch (err: any) {
-            setError(err.message)
-        }
-    }
-
     return (
         <div>
             <h1>Radu's Fitness App</h1>
-            <LoginForm onSubmit={handleLogin} onRegister={handleRegister} error={error} />
+            <LoginForm onSubmit={handleLogin} error={error} />
         </div>
     )
 }

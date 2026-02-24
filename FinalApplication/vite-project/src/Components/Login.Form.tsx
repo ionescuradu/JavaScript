@@ -1,12 +1,13 @@
 import { useState, FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface LoginFormProps {
     onSubmit: (email: string, password: string) => void
-    onRegister: (email: string, password: string) => void
     error?: string
 }
 
-function LoginForm({ onSubmit, onRegister, error }: LoginFormProps) {
+function LoginForm({ onSubmit, error }: LoginFormProps) {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -44,9 +45,12 @@ function LoginForm({ onSubmit, onRegister, error }: LoginFormProps) {
 
             <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '0.5rem' }}>
                 <div></div>
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button type="submit" style={{ padding: '0.5rem', cursor: 'pointer', flex: 1, backgroundColor: '#2ecc71', color: '#fff', border: 'none', borderRadius: '6px' }}>Login</button>
-                    <button type="button" onClick={() => onRegister(email, password)} style={{ padding: '0.5rem', cursor: 'pointer', flex: 1, backgroundColor: '#3498db', color: '#fff', border: 'none', borderRadius: '6px' }}>Register</button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <button type="submit" style={{ padding: '0.5rem', cursor: 'pointer', backgroundColor: '#2ecc71', color: '#fff', border: 'none', borderRadius: '6px' }}>Login</button>
+                    <p style={{ textAlign: 'center', margin: 0 }}>
+                        Don't have an account?{' '}
+                        <span onClick={() => navigate('/register')} style={{ color: '#3498db', cursor: 'pointer' }}>Register here</span>
+                    </p>
                 </div>
             </div>
         </form>

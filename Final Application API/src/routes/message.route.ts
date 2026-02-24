@@ -1,7 +1,9 @@
 import { Router, Request, Response } from "express";
 import { MessageService } from "../services/message.service"
+import { authenticateToken } from "../middleware/auth.middleware";
 
 const router = Router()
+router.use(authenticateToken)
 
 const messageService = new MessageService()
 
