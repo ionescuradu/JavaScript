@@ -14,7 +14,9 @@ export async function loginUser(email: string, password: string) {
         throw new Error(error.error || "Login failed")
     }
 
-    return await response.json()
+    const data = await response.json()
+    localStorage.setItem("token", data.token)
+    return data
 }
 
 export async function createUser(email: string, password: string) {

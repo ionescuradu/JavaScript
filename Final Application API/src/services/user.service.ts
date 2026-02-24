@@ -1,5 +1,6 @@
 import { supabase } from "../lib/supabase";
 import { hashPassword, comparePassword } from "../lib/hash";
+import { generateToken } from "../lib/jwt";
 import type { CreateUserDTO, UserDTO } from "../types/user.dto";
 
 export class UserService {
@@ -34,6 +35,7 @@ export class UserService {
             throw new Error("Invalid email or password.");
         }
 
-        return data;
+        const token = generateToken({ id: data.id, email: data.email });
+        return { token };
     }
 }
