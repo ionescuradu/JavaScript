@@ -11,7 +11,7 @@ function Login() {
         try {
             setError('')
             await loginUser(email, password)
-            navigate('/dashboard')
+            navigate('/dashboard', { replace: true })
         } catch (err: any) {
             setError(err.message)
         }
@@ -22,7 +22,7 @@ function Login() {
             setError('')
             await createUser(email, password)
             await loginUser(email, password)
-            navigate('/dashboard')
+            navigate('/dashboard', { replace: true })
         } catch (err: any) {
             setError(err.message)
         }
