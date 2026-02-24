@@ -19,8 +19,12 @@ router.post('/AddUser', async (req: Request, res: Response) => {
         return
     }
 
-    const data = await userService.createUser(req.body)
-    res.send(data)
+    try {
+        const data = await userService.createUser(req.body)
+        res.send(data)
+    } catch (error: any) {
+        res.status(500).send({ error: error.message })
+    }
 })
 
 export default router

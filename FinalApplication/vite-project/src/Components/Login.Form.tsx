@@ -1,27 +1,30 @@
 import { useState, FormEvent } from 'react'
 
 interface LoginFormProps {
-    onSubmit: (userName: string, password: string) => void
+    onSubmit: (email: string, password: string) => void
+    onRegister: (email: string, password: string) => void
+    error?: string
 }
 
-function LoginForm({ onSubmit }: LoginFormProps) {
-    const [userName, setUserName] = useState('')
+function LoginForm({ onSubmit, onRegister, error }: LoginFormProps) {
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        onSubmit(userName, password)
+        onSubmit(email, password)
     }
 
     return (
         <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '0 auto' }}>
+            {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
             <div style={{ marginBottom: '1rem', display: 'grid', gridTemplateColumns: '120px 1fr', alignItems: 'center', gap: '0.5rem' }}>
-                <label htmlFor="userName">User Name:</label>
+                <label htmlFor="email">Email:</label>
                 <input
-                    type="text"
-                    id="userName"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                     style={{ padding: '0.5rem' }}
                 />
@@ -41,7 +44,10 @@ function LoginForm({ onSubmit }: LoginFormProps) {
 
             <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '0.5rem' }}>
                 <div></div>
-                <button type="submit" style={{ padding: '0.5rem', cursor: 'pointer' }}>Login</button>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <button type="submit" style={{ padding: '0.5rem', cursor: 'pointer', flex: 1 }}>Login</button>
+                    <button type="button" onClick={() => onRegister(email, password)} style={{ padding: '0.5rem', cursor: 'pointer', flex: 1 }}>Register</button>
+                </div>
             </div>
         </form>
     )
