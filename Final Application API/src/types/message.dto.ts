@@ -1,12 +1,12 @@
 export interface MessageDTO {
     id: string;
-    conversation_id: string;
+    conversations_id: string;
     text: string | null;
-    role: BigInt;
+    role: number;
 }
 
 export interface CreateMessageDTO {
-    conversation_id: string;
+    conversations_id: string;
     text: string | null;
-    role: BigInt;
+    role: number;
 }
